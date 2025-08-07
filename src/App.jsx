@@ -10,7 +10,7 @@ import './App.css'
 import ProductInfo from './pages/productinfo/ProductInfo';
 import ScrollTop from './components/scrollTop/ScrollTop';
 import CartPage from './components/cart/Cartpage';
-import Allproduct from './pages/allProduct/Allproduct';
+import AllProduct from './pages/allProduct/AllProduct';
 import Login from './pages/registration/Login';
 import Signup from './pages/registration/Signup';
 import UserDashboard from './pages/user/UserDashboard'
@@ -33,7 +33,7 @@ function App() {
               <Route path='/*' element={<Nopage/>} />
               <Route path='/productInfo/:id' element={<ProductInfo/>} />
               <Route path='/cart' element={<CartPage/>}/>
-              <Route path='/allproduct' element={<Allproduct/>}/>
+              <Route path='/allproduct' element={<AllProduct/>}/>
               <Route path='/Login' element={<Login/>}/>
               <Route path='/signup' element={<Signup/>} />
               <Route path="/category/:categoryname" element={<CategoryPage />} /> 
