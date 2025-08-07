@@ -4,8 +4,7 @@ import Category from '../../components/category/Category'
 import HomePageProductCard from '../../components/homePageProductCard/HomePageProductCard'
 import Track from '../../components/track/Track'
 import Testimonial from '../../components/testimonial/Testimonial'
-import MyContext from '../../context/MyContext'
-import Loader from '../../components/loader/Loader'
+
 
 function Homepage() {
   return (
