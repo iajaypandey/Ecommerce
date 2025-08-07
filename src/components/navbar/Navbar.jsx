@@ -1,9 +1,25 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Searchbar from '../../components/search/Searchbar';
+import { useSelector } from "react-redux";
 
 
 
 function Navbar() {
+  // get user from localStorage
+  const user = JSON.parse(localStorage.getItem('users'));
+
+  // navigate
+  const navigate = useNavigate();
+
+  // logout function
+  function logout(){
+    localStorage.clear('users');
+    navigate('/login');
+  }
+
+  // CartItems
+  const cartItems = useSelector((state) => state.cart);
+
   const navList = (
     <ul className="flex space-x-3 text-white font-medium text-md px-5">
 
@@ -19,20 +35,22 @@ function Navbar() {
             <Link to={'/signup'}>Sign up</Link>
         </li>
 
-        <li>
-            <Link to={'/kamal'}>Kamal</Link>
-        </li>
+        {user?.role === 'user' && <li>
+            <Link to={'/user-dashboard'}>{user?.name}</Link>
+        </li>}
 
-        {/* <li>
-          <Link to={'/'}>Admin</Link>
-        </li>
+        { user?.role === 'admin' && <li>
+          <Link to={'/admin-dashboard'}>{user?.name}</Link>
+        </li>}
+
+        { user && <li className="cursor-pointer" onClick={logout}>
+          Logout
+        </li>}
 
         <li>
-          <Link>Logout</Link>
-        </li> */}
-
-        <li>
-            <Link to={'/cart'}>cart(0)</Link>
+            <Link to={'/cart'}>
+                Cart({cartItems.length})
+            </Link>
         </li>
 
     </ul>
@@ -49,10 +67,12 @@ function Navbar() {
           </Link>
         </div>
 
+        {/* right */}
         <div className="right flex justify-center mb-4 lg:mb-0">
           {navList}
         </div>
 
+        {/* search bar */}
         <div>
           <Searchbar/>
         </div>
