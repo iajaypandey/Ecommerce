@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
-import myContext from "../../context/MyContext";
+import MyContext from "../../context/MyContext";
 import { useParams } from "react-router";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
@@ -10,7 +10,7 @@ import { addToCart, deleteFromCart } from "../../redux/cartSlice";
 import toast from "react-hot-toast";
 
 const ProductInfo = () => {
-    const context = useContext(myContext);
+    const context = useContext(MyContext);
     const { loading, setLoading } = context;
 
     const [product, setProduct] = useState('')
